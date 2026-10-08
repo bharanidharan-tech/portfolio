@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #f6fafd;
+            color: #2b4a66;
+            font-family: Arial, sans-serif;
+        }
+        .neo {
+            background: #f6fafd;
+
+            box-shadow:
+                8px 8px 16px rgba(174, 199, 216, 0.35),
+                -8px -8px 16px white;
+        }
+        .pressed {
+            background: #f6fafd;
+            box-shadow:
+                inset 5px 5px 10px rgba(174, 199, 216, 0.35),
+                inset -5px -5px 10px white;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px;
+            z-index: 100;
+        }
+        nav {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #2f5d8a;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            gap: 5px;
+            padding: 5px;
+            border-radius: 30px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #6b8ba6;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #2f5d8a;
+            transform: translateY(-2px);
+        }
+
+        .mail {
+            text-decoration: none;
+            color: #2f5d8a;
+            padding: 10px 18px;
+            border-radius: 30px;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px 0;
+        }
+        .avatar {
+            width: 110px;
+            height: 110px;
+        border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .avatar span {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .hero h1 {
+            font-size: clamp(50px, 12vw, 100px);
+            color: #2f5d8a;
+            font-weight: 800;
+        }
+        .tagline {
+            margin-top: 25px;
+            padding: 12px 35px;
+            border-radius: 30px;
+        }
+        .tagline span {
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+        .hero p {
+            margin-top: 30px;
+            color: #6b8ba6;
+            font-size: 18px;
+        }
+        .hero p span {
+
+            color: #2f5d8a;
+
+            font-weight: bold;
+        }
+        .explore {
+            margin-top: 40px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: #2f5d8a;
+        }
+        section {
+            padding: 100px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+        .label {
+            color: #6b8ba6;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        .title {
+            margin-top: 10px;
+            font-size: 35px;
+            color: #2f5d8a;
+        }
+        .grid {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .card {
+        padding: 35px;
+            border-radius: 30px;
+        }
+        .card h3 {
+           margin-top: 20px;
+            color: #2f5d8a;
+        }
+        .card p {
+            margin-top: 15px;
+            line-height: 1.7;
+            color: #6b8ba6;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .skill {
+            padding: 10px 15px;
+        border-radius: 12px;
+            color: #2f5d8a;
+        }
+        #details {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 120px;
+        }
+        .details-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .details-card {
+            margin-top: 35px;
+            padding: 50px;
+            border-radius: 40px;
+        }
+        .details-top {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .details-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto auto 25px;
+        }
+        .details-avatar span {
+            font-size: 30px;
+            font-weight: bold;
+            color: #2f5d8a;
+        }
+        .details-top h2 {
+            font-size: 42px;
+    color: #2f5d8a;
+        }
+        .details-top p {
+            margin-top: 12px;
+            color: #6b8ba6;
+            font-size: 17px;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .detail {
+            padding: 25px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+        .detail:hover {
+            transform: translateY(-5px);
+        }
+        .detail-icon {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .detail-label {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #6b8ba6;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .detail-value {
+            color: #2f5d8a;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+        .detail-value a {
+            color: #2f5d8a;
+            text-decoration: none;
+        }
+        .detail-value a:hover {
+            text-decoration: underline;
+        }
+        .about-me {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 35px;
+        }
+        .about-me p {
+            max-width: 750px;
+            margin: 15px auto 0;
+            line-height: 1.8;
+            color: #6b8ba6;
+            font-size: 16px;
+        }
+        .project {
+            padding: 35px;
+            border-radius: 30px;
+        }
+        .project-box {
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            margin-bottom: 25px;
+        }
+        .project-box span {
+            font-size: 70px;
+            color: #7dd3fc;
+        }
+        .project h3 {
+            color: #2f5d8a;
+        }
+        .project p {
+            margin-top: 10px;
+            color: #6b8ba6;
+            line-height: 1.6;
+        }
+        .contact {
+            max-width: 750px;
+            margin: auto;
+            padding: 60px;
+            text-align: center;
+            border-radius: 40px;
+        }
+        .contact h2 {
+            color: #2f5d8a;
+            font-size: 35px;
+        }
+        .contact p {
+            margin: 20px auto;
+            color: #6b8ba6;
+        }
+        .contact a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #2f5d8a;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #6b8ba6;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .float {
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        @media (max-width: 700px) {
+            .menu {
+                display: none;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            .details-card {
+                padding: 30px 20px;
+            }
+            .details-top h2 {
+                font-size: 32px;
+            }
+            .hero h1 {
+                font-size: 55px;
+            }
+            .contact {
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo neo">
+                B.
+            </a>
+            <div class="menu neo">
+                <a href="#details">
+                    Details
+                </a>
+                <a href="#about">
+                    About
+                </a>
+                <a href="#projects">
+                    Projects
+                </a>
+                <a href="#contact">
+                    Contact
+                </a>
+            </div>
+            <a
+                href="mailto:bharani.235971@gmail.com"
+                class="mail neo">
+
+                Say hello
+            </a>
+        </nav>
+    </header>
+    </section>
+    <section id="details">
+        <div class="details-container">
+            <span class="label">
+                Personal Profile
+            </span>
+            <div class="details-card neo">
+                <div class="details-top">
+                    <div class="details-avatar pressed">
+                        <span>
+                            BG
+                        </span>
+                    </div>
+                    <h2>
+                        Bharanidharan G
+                 </h2>
+                <p>
+                        Computer Science Engineering Student
+                    </p>
+                </div>
+                <div class="details-grid">
+                    <div class="detail pressed">
+                        <div class="detail-icon">
+                            👤
+                        </div>
+                        <span class="detail-label">
+                            Name
+                        </span>
+                        <div class="detail-value">
+                            Bharanidharan G
+                        </div>
+                    </div>
+                    <div class="detail neo">
+
+                        <div class="detail-icon">
+                            🎓
+                        </div>
+                        <span class="detail-label">
+                            College
+                        </span>
+                        <div class="detail-value">
+                            Karunya
+                        </div>
+                    </div>
+                    <div class="detail neo">
+                    <div class="detail-icon">
+                            💻
+                        </div>
+
+                        <span class="detail-label">
+                            Department
+                        </span>
+
+                        <div class="detail-value">
+                            Computer Science Engineering
+                        </div>
+                    </div>
+                    <div class="detail pressed">
+
+                        <div class="detail-icon">
+                            📱
+                        </div>
+
+                        <span class="detail-label">
+                            Phone
+                        </span>
+
+                        <div class="detail-value">
+
+                            <a href="tel:9342705207">
+                                9342705207
+                            </a>
+
+                        </div>
+
+                    </div>
+                    <div class="detail pressed">
+                        <div class="detail-icon">
+                            ✉️
+                        </div>
+                        <span class="detail-label">
+                            Email
+                        </span>
+                        <div class="detail-value">
+                            <a
+                                href="mailto:bharani.235971@gmail.com">
+
+                                bharani.235971@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                   <div class="detail neo">
+
+                        <div class="detail-icon">
+                            🚀
+                        </div>
+                        <span class="detail-label">
+                            Interests
+                        </span>
+                        <div class="detail-value">
+                           Coding • Technology •
+                            Creative Projects
+                        </div>
+                    </div>
+                    <div class="detail about-me pressed">
+
+                        <div class="detail-icon">
+                            ✨
+                        </div>
+                        <span class="detail-label">
+                            About Me
+                        </span>
+                        <p>
+                            I am a Computer Science Engineering
+                            student at Karunya ,I enjoys learning
+                            new technologies, building interesting
+                            projects, solving problems, and turning
+                            creative ideas into useful digital
+                            experiences.
+                            I like exploring new ideas, learning
+                            something different every day, and
+                            creating interesting things with
+                            technology.
+                         </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="container">
+            <span class="label">
+                About
+            </span>
+            <h2 class="title">
+                A quiet mind in a loud world.
+            </h2>
+            <div class="grid">
+                <div class="card neo">
+                    <h3>
+                        ✨ Philosophy
+                    </h3>
+                    <p>
+                        I find meaning in the spaces between.
+                        Between work and play, logic and dream,
+                        reality and the imaginary.
+                    </p>
+                </div>
+                <div class="card neo">
+                    <h3>
+                        ✨ Hobbies
+                    </h3>
+                    <div class="skills">
+                        <span class="skill pressed">
+                            Coding
+                        </span>
+                        <span class="skill neo">
+                            Reading
+                        </span>
+                        <span class="skill neo">
+                            Observing
+                        </span>
+                    </div>
+                    <p>
+                        My craft is presence. I engage deeply,
+                        play fully, and let ideas arrive on their own.
+                    </p>
+                </div>
+            </div>
+     </div>
+    </section>
+    <section id="projects">
+        <div class="container">
+            <span class="label">
+                Selected Work
+            </span>
+            <h2 class="title">
+                Projects
+            </h2>
+            <div class="grid">
+                <article class="project neo">
+                    <div class="project-box pressed">
+
+                        <span>🤔</span>
+                    </div>
+                    <h3>
+                        Multimodal Document Intelligence
+                    </h3>
+                    <br>
+                    <a
+                        href="https://screenshot-perfect-pixel-6382.lovable.app"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        View Project
+
+                    </a>
+              <p>
+                        Skills is important.
+                    </p>
+                </article>
+                <article class="project neo">
+                   <div class="project-box pressed">
+                        <span>🤕</span>
+                    </div>
+                    <h3>
+                        imagination...
+                    </h3>
+                    <br>
+                    <a
+                        href="https://bharanidharan-tech.github.io/galaxy./thought.html"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        View Project
+
+                    </a>
+                   <p>
+                        My thoughts.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="contact neo">
+            <h2>
+                If You Wanna Connect me Use the Email .
+            </h2>
+           <p>
+                Or else Call Me .
+            </p>
+            <a
+                href="mailto:bharani.235971@gmail.com"
+                class="neo">
+                ✉ bharani.235971@gmail.com
+            </a>
+        </div>
+    </section>
+    <footer>
+        © <span id="year"></span>
+        Bharanidharan G
+    </footer>
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+</body>
+</html>
